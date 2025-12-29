@@ -1,0 +1,65 @@
+[project]
+name = "pedtriage"
+version = "0.1.0"
+description = "A demo Django app for AI-powered pediatric symptom triage"
+authors = [{ name = "Eric", email = "eric@ericdevelops.com" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "django",
+    "turbo-django",          # Hotwire/Turbo integration
+    "openai",                # For OpenRouter (OpenAI-compatible API)
+    "python-dotenv",
+    "gunicorn",
+    "whitenoise"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "flake8",
+    "pytest",
+    "pytest-django",
+]
+
+
+
+[dependency-groups]
+# Optional: you can add uv-specific settings here if desired
+dev = [
+    "black",
+    "isort",
+    "flake8",
+    "pytest",
+    "pytest-django",
+]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  )/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 88
